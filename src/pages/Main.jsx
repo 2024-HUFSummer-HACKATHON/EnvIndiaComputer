@@ -22,7 +22,7 @@ const DonateDescription = styled.div`
 `
 const Box = styled.div`
   width: 340px;
-  height: 190px;
+  height: 190px; //나중에 api연동하고나면 height빼기-이미지 크기에 맞게 늘어나게끔하기위해
   background-color: #FFFBF1;
   border-radius: 35px;
   display: flex;
