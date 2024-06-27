@@ -15,6 +15,9 @@ class Topic(models.Model):
     celebration_phrase = models.CharField(max_length=200)
     donation_paper =  models.ImageField(blank = True, upload_to="donationPaper")
 
+    def __str__(self):
+        return self.topic
+
 class Card(models.Model):
     cardholder_name = models.CharField(max_length=100)
     card_number = models.CharField(max_length=16)
