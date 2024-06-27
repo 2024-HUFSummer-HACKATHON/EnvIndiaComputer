@@ -45,7 +45,7 @@ const Icon = styled.p`
     }
 `;
 
-const BlockButton = ({ text, leftArrow, rightArrow, onClick, ...props }) => {
+const SiteButton = ({ text, leftArrow, rightArrow, onClick, ...props }) => {
     return (
         <Button onClick={onClick} {...props}>
             <Icon className={classNames({ visible: leftArrow })}>
@@ -59,4 +59,4 @@ const BlockButton = ({ text, leftArrow, rightArrow, onClick, ...props }) => {
     );
 };
 
-export default BlockButton;
+export default SiteButton;
