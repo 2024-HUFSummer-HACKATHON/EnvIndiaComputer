@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import BlockButton from "../components/BlockButton.js";
+import SiteButton from "../components/SiteButton.js";
 import { useNavigate } from 'react-router-dom';
 import routes from "../routes.js";
 
@@ -16,7 +16,7 @@ const Sitemap = ({}) => {
     const elements = routes
         .filter((route) => route.name)
         .map((route) => (
-            <BlockButton
+            <SiteButton
                 key={route.path}
                 text={route.name}
                 onClick={() => {
