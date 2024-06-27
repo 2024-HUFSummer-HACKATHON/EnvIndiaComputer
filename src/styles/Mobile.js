@@ -23,11 +23,17 @@ const Content=styled.div`
 const Header=styled.div`
     display:flex;
     align-items:center;
-    justify-content:space-between;
+    justify-content:center;
+    /* justify-content:space-between; */
     height:40px;
     padding:16px 20px;
     background-color: #FFFBF1;
     margin-bottom: 30px;
+`
+const Logo=styled.img`
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center; */
 `
 const Footer=styled.div`
     position: absolute; /* Footer를 절대 위치로 설정 */
@@ -50,7 +56,7 @@ const Mobile=()=>{
             <Container>
                 <Content>
                     <Header>
-                        헤더
+                        <Logo src="/images/Logo.png"/>
                     </Header>
                     <Outlet /> 
                     <Footer>
