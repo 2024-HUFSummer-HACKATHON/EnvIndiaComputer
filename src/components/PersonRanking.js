@@ -2,6 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import { BsFillStarFill } from "react-icons/bs";
 
+const Container = styled.div`
+margin-bottom: 80px;
+`
+
 const Box = styled.div`
     width: 340px;
     background-color: ${({theme})=>theme.backgroundColors.lightBlue};
@@ -79,45 +83,47 @@ const Icon = styled.div`
 function PersonRanking() {
   return (
     <>
-      <Box>
-        <Person>
-            <BsFillStarFill className='icons1'/> 
-            <Number>1</Number>
-            <Name>임승민</Name>
-            <Percent>80%</Percent>
-            <Amount>800,000원</Amount>
-        </Person>
-        <Person>
-            <Icon>
-                <BsFillStarFill className='icons2'/> 
-            </Icon>
-            <Number>2</Number>
-            <Name>김현아</Name>
-            <Percent>60%</Percent>
-            <Amount>600,000원</Amount>
-        </Person>
-        <Person>
-            <Icon>
-                <BsFillStarFill className='icons3'/> 
-            </Icon>
-            <Number>3</Number>
-            <Name>양혜인</Name>
-            <Percent>45%</Percent>
-            <Amount>450,000원</Amount>
-        </Person>
-        <Person2 className='under'>
-            <Number>4</Number>
-            <Name>유지희</Name>
-            <Percent>30%</Percent>
-            <Amount>350,000원</Amount>
-        </Person2>
-        <Person2>
-            <Number>5</Number>
-            <Name>김정주</Name>
-            <Percent>20%</Percent>
-            <Amount>150,000원</Amount>
-        </Person2>
-      </Box>
+        <Container>
+            <Box>
+                <Person>
+                    <BsFillStarFill className='icons1'/> 
+                    <Number>1</Number>
+                    <Name>임승민</Name>
+                    <Percent>80%</Percent>
+                    <Amount>800,000원</Amount>
+                </Person>
+                <Person>
+                    <Icon>
+                        <BsFillStarFill className='icons2'/> 
+                    </Icon>
+                    <Number>2</Number>
+                    <Name>김현아</Name>
+                    <Percent>60%</Percent>
+                    <Amount>600,000원</Amount>
+                </Person>
+                <Person>
+                    <Icon>
+                        <BsFillStarFill className='icons3'/> 
+                    </Icon>
+                    <Number>3</Number>
+                    <Name>양혜인</Name>
+                    <Percent>45%</Percent>
+                    <Amount>450,000원</Amount>
+                </Person>
+                <Person2 className='under'>
+                    <Number>4</Number>
+                    <Name>유지희</Name>
+                    <Percent>30%</Percent>
+                    <Amount>350,000원</Amount>
+                </Person2>
+                <Person2>
+                    <Number>5</Number>
+                    <Name>김정주</Name>
+                    <Percent>20%</Percent>
+                    <Amount>150,000원</Amount>
+                </Person2>
+            </Box>
+      </Container>
     </>
   )
 }
