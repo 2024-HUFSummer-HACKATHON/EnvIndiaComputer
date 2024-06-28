@@ -1,4 +1,4 @@
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { BsHouseDoorFill } from "react-icons/bs";
 
@@ -52,6 +52,8 @@ const Text = styled.div`
 `;
 
 const Mobile = () => {
+    const navigate=useNavigate();
+
     const location = useLocation();
     const isHidden = location.pathname === '/' || location.pathname === '/main';
 
@@ -65,7 +67,8 @@ const Mobile = () => {
                         <BsHouseDoorFill 
                             size='30px' 
                             color='#0055A5' 
-                            style={{ visibility: isHidden ? 'hidden' : 'visible' }} 
+                            style={{ visibility: isHidden ? 'hidden' : 'visible' }}
+                            onClick={() => navigate('/main')}
                         />
                     </Header>
                     <Outlet />
