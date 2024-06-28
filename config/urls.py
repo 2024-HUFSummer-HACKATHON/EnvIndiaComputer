@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/donates/', include('donates.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 # MEDIA_URL로 들어오는 요청에 대해 MEDIA_ROOT 경로를 탐색한다.
