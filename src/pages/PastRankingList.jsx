@@ -4,6 +4,15 @@ import styled from 'styled-components';
 import BlockButtons from '../components/BlockButtons';
 import { useNavigate } from "react-router-dom";
 
+const Container=styled.div`
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap;
+  gap: 1vw; */
+
+  align-items: center;
+`;
+
 const Title = styled.div`
   display: flex;
   flex-direction: row;
@@ -20,6 +29,10 @@ const Title = styled.div`
 
 const List = styled.div`
   padding-bottom: 44px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1vw;
 `;
 
 const months = [
@@ -43,30 +56,34 @@ function PastRankingList() {
 
   return (
     <>
-      <Title>
-        <BsFillTrophyFill className='icons'/>
-        <span style={{color: '#0055A5', marginRight: '6px'}}>2024 </span> 명예의 전당
-      </Title>
-      <List>
-        {months.map((month, index) => {
-          const isPast = index < currentMonth; // 과거 달
-          const isCurrent = index === currentMonth; // 현재 달
-          const icon = isCurrent ? <BsCheckCircleFill/> : <BsDashCircle/>;
-          const bgColor = isPast ? '#01B8E9' : isCurrent ? '#0055A5' : '#E1F0F4';
-          const textColor = isPast || isCurrent ? '#ffffff' : '#AFCED6'; // 현재 달과 과거 달은 흰색(#ffffff), 미래 달은 #AFCED6
-
-          return (
-            <BlockButtons 
-              key={index} 
-              icon={icon} 
-              text={`${month}: ${month} 주제`} 
-              bgColor={bgColor}
-              textColor={textColor}
-              onClick={() => handleClick(index)}
-            />
-          );
-        })}
-      </List>
+      <Container>
+        <Title>
+          <BsFillTrophyFill className='icons'/>
+          <span style={{color: '#0055A5', marginRight: '6px'}}>2024 </span> 명예의 전당
+        </Title>
+        <List>
+          {months.map((month, index) => {
+            const isFuture = index>currentMonth; // 미래 달
+            const isCurrent = index === currentMonth || index < currentMonth; // 현재 달
+            const icon = isCurrent ? <BsCheckCircleFill/> : <BsDashCircle/>;
+            const bgColor = isFuture ? '#E1F0F4' : index === currentMonth ? '#0055A5' : '#01B8E9';
+            // const textColor = isFuture || isCurrent ? '#ffffff' : '#AFCED6'; // 현재 달과 과거 달은 흰색(#ffffff), 미래 달은 #AFCED6
+            const textColor = isCurrent ? '#ffffff' : '#AFCED6'; 
+            // 현재 달과 과거 달은 흰색(#ffffff), 미래 달은 #AFCED6
+            
+            return (
+              <BlockButtons 
+                key={index} 
+                icon={icon} 
+                text={`${month}: ${month} 주제`} 
+                bgColor={bgColor}
+                textColor={textColor}
+                onClick={() => handleClick(index)}
+              />
+            );
+          })}
+        </List>
+      </Container>
     </>
   );
 }
