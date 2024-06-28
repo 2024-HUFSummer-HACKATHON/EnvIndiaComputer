@@ -7,26 +7,23 @@ const Title = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 48px 0 22px 48px;
+  margin: 9px 0 27px 45px;
   .icons{
     margin-right: 16px;
     width: 30px;
     height: 30px;
   }
 `
-const DonateDescription = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-`
 const Box = styled.div`
+  margin: 0 44px;
   width: 340px;
   height: 190px; //나중에 api연동하고나면 height빼기-이미지 크기에 맞게 늘어나게끔하기위해
-  background-color: #FFFBF1;
+
   border-radius: 35px;
   display: flex;
   justify-content: center;
+  background-image: url('/images/Basketball.png');
+  background-size: 340px auto; /* 이미지 너비를 340px로 설정 */
 `
 const Text = styled.div`
   letter-spacing: 0.1vw;
@@ -65,13 +62,13 @@ function Main() {
         <BsChatRightQuoteFill className='icons'/>
           7월 기부
       </Title>
-      <DonateDescription>
-        <Box>
-          <Text>
-            신체적으로 불편한 학우들이 학교의 계단, 여닫이 문 등으로 인한 불편함을 겪지 않도록 시설 개선을 위한 모금
-          </Text>
-        </Box>
-      </DonateDescription>
+
+      <Box>
+
+      </Box>
+      <Text>
+          신체적으로 불편한 학우들이 학교의 계단, 여닫이 문 등으로 인한 불편함을 겪지 않도록 시설 개선을 위한 모금
+        </Text>
       <DonationButton>
         <BsArrowRightCircleFill className='icons'/>
           기부하러 가기

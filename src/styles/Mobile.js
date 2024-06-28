@@ -26,7 +26,7 @@ const Header=styled.div`
     /* justify-content:center; */
     /* justify-content:space-between; */
     height:40px;
-    padding:15px 25px;
+    padding:25px;
 `
 const Logo=styled.img`
     width: 135px;
