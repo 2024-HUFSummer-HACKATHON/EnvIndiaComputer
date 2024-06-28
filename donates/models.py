@@ -8,6 +8,8 @@ class Topic(models.Model):
     topic = models.CharField(max_length=200)
     detail = models.TextField()
     detail_image = models.ImageField(blank = True, upload_to="detail")
+    detail_image2 = models.ImageField(blank = True, upload_to="detail")
+    detail_image3 = models.ImageField(blank = True, upload_to="detail")
     target_amount = models.IntegerField()
     single_amount = models.IntegerField()
     website_url = models.TextField()
