@@ -1,7 +1,9 @@
 import React from 'react'
 import { BsChatRightQuoteFill, BsArrowRightCircleFill, BsFillTrophyFill, BsPersonFill } from "react-icons/bs";
 import styled from 'styled-components';
+
 import { useNavigate } from "react-router-dom";
+
 import BlockButtons from '../components/BlockButtons';
 
 const Container=styled.div`
@@ -16,8 +18,10 @@ const Title = styled.div`
   display: flex;
   flex-direction: row;
 
+
   align-items: center;
   margin: 48px 0 22px 48px;
+
   .icons{
     margin-right: 16px;
     width: 30px;
@@ -31,14 +35,14 @@ const Title = styled.div`
 `;
 const ContentImg = styled.div`
   margin: 0 44px;
+
 `
 const DonateDescription = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-`
-const Box = styled.div`
+
   width: 340px;
   height: 190px; //나중에 api연동하고나면 height빼기-이미지 크기에 맞게 늘어나게끔하기위해
   background-color: #FFFBF1;
@@ -111,6 +115,7 @@ function Main() {
           text={ "명예의 전당" } 
           onClick={()=>navigate('/ranking')}
           />
+
       </Container>
     </>
   )
