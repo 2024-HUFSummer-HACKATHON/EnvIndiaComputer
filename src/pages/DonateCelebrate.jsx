@@ -10,8 +10,9 @@ import BlockButtons from '../components/BlockButtons';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-items: center;
+  
+  flex-wrap: wrap;
   gap: 0.5vw;
   position: relative;
   min-height: calc(100vh - 100px); /* Footer 높이만큼 계산 */
@@ -26,6 +27,14 @@ const CelebrateText = styled.div`
   font-weight: ${({ theme }) => theme.fontWeights.Bold};
   white-space: pre-wrap; /* 줄바꿈을 인식하고 적용 */
   text-align: center; /* 텍스트를 가운데 정렬 */
+
+  word-wrap: normal;
+  word-break: keep-all;
+  line-height: 1.4;
+
+  .donation{
+    color: ${({ theme }) => theme.backgroundColors.blue};
+  }
 `;
 
 const BallGoalImg = styled.img`
@@ -44,24 +53,34 @@ function DonateCelebrate() {
   const navigate = useNavigate();
   
   return (
-    <Container>
-      <BallGoalImg src={BallGoal} />
-      <CelebrateText>
-        성공적으로{"\n"}
-        기부되었습니다
-      </CelebrateText>
-      <BlockButtons 
-        icon={<BsFillTrophyFill />} 
-        text={"명예의 전당"} 
-        onClick={() => navigate('/ranking')} 
-      />
-      <BlockButtons 
-        icon={<BsBasket3Fill />} 
-        text={"스포츠 용품 구매하러 가기"} 
-        onClick={() => navigate('/test')} 
-      />
-      <BannerImg src={Banner} />
-    </Container>
+    <>
+      <Container>
+        <BallGoalImg src={BallGoal} />
+        {/* <CelebrateText>
+          성공적으로
+          {"\n"}
+          <span className='donation'>기부</span>
+          되었습니다
+        </CelebrateText> */}
+        <CelebrateText>
+          성공적으로
+          {"\n"}
+          기부
+          되었습니다
+        </CelebrateText>
+        <BlockButtons 
+          icon={<BsFillTrophyFill />} 
+          text={"명예의 전당"} 
+          onClick={() => navigate('/ranking')} 
+        />
+        <BlockButtons 
+          icon={<BsBasket3Fill />} 
+          text={"스포츠 용품 구매하러 가기"} 
+          onClick={() => navigate('/test')} 
+        />
+        <BannerImg src={Banner} />
+      </Container>
+    </>
   );
 }
 
