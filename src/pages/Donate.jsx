@@ -1,8 +1,13 @@
 import React from 'react'
-import { BsChatRightQuoteFill, BsPlayCircleFill } from "react-icons/bs";
+import { BsChatRightQuoteFill, BsArrowRightCircleFill, BsFillTrophyFill } from "react-icons/bs";
 import { useNavigate } from 'react-router-dom';
 
+import BaseBall from '../images/base.png'; // 이미지 파일을 가져옵니다
+
+import BlockButtons from '../components/BlockButtons';
+
 import styled from 'styled-components';
+import DonationDetailContents from '../components/DonationDetailContents';
 
 const Container=styled.div`
   display: flex;
@@ -41,7 +46,37 @@ const DonateDescription = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-`
+`;
+
+const DonationImage=styled.div`
+  background-image: url(${BaseBall}); // 이미지를 동적으로 삽입
+`;
+
+const DonationText=styled.div`
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  /* flex-wrap:wrap;
+  gap:1vw; */
+  color:${({theme})=>theme.colors.black};
+
+  padding-left: 1.5vw;
+  letter-spacing: 0.1vw;
+
+  max-width: 300px;
+
+  word-wrap: normal;
+  word-break: keep-all;
+  line-height: 1.4;
+  border-left: 5px solid ${({ theme }) => theme.colors.black};
+
+  font-size:${({theme})=>theme.fontSizes.detailText};
+`;
+
+const DonationTextHeader=styled.p`
+  font-weight:bold;
+  margin:auto auto auto 0px;
+`;
 const Box = styled.div`
   display: flex;
   justify-content: center;
@@ -86,6 +121,7 @@ const DonationButton = styled.button`
     width: 24px;
     height: 24px;
   }
+  margin:auto auto auto 0px;
 `
 
 function Donate() {
@@ -103,17 +139,31 @@ function Donate() {
         <Topic>
           장애인농구
         </Topic>
-        <DonateDescription>
-          <Box>
-          신체적으로 불편한 학우들이 학교의 계단, 여닫이 문 등으로 인한 불편함을 겪지 않도록 시설 개선을 위한 모금
-          </Box>
-        </DonateDescription>
+
+        <DonationDetailContents 
+          subheading='소제목테스트' 
+          contents='test내용물'
+        />
+
+        {/* <DonateDescription>
+          <DonationImage></DonationImage>
+          <DonationText>
+            <DonationTextHeader>소제목01</DonationTextHeader>
+            신체적으로 불편한 학우들이 학교의 계단, 여닫이 문 등으로 인한 불편함을 겪지 않도록 시설 개선을 위한 모금
+          </DonationText>
+        </DonateDescription> */}
+
         <DonationButton
           onClick={() => navigate('/donate/completed')}
         >
-          <BsPlayCircleFill className='icons'/>
-            문 부시러 가기
+          <BsArrowRightCircleFill className='icons'/>
+            기부하러가기
         </DonationButton>
+        <BlockButtons 
+          icon={<BsFillTrophyFill />} 
+          text="명예의 전당" 
+          onClick={() => navigate('/ranking')}
+        />
       </Container>
     </>
   )
