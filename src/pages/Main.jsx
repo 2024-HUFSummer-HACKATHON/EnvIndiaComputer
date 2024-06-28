@@ -10,8 +10,8 @@ const Title = styled.div`
   margin: 48px 0 22px 48px;
   .icons{
     margin-right: 16px;
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
   }
 `
 const DonateDescription = styled.div`
@@ -63,7 +63,7 @@ function Main() {
     <>
       <Title>
         <BsChatRightQuoteFill className='icons'/>
-        8월 기부
+          7월 기부
       </Title>
       <DonateDescription>
         <Box>
