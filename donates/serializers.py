@@ -9,7 +9,7 @@ class TopicSerializer(serializers.ModelSerializer):
 class TopicDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Topic
-        fields = ('detail', 'detail_image', 'detail_image2', 'detail_image3')
+        fields = ('detail', 'detail2', 'detail3', 'detail_image', 'detail_image2', 'detail_image3')
 
 class CelebrationSerializer(serializers.ModelSerializer):
     class Meta:

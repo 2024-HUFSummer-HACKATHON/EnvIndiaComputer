@@ -6,7 +6,9 @@ from django.db import models
 class Topic(models.Model):
     month = models.IntegerField()
     topic = models.CharField(max_length=200)
-    detail = models.TextField()
+    detail = models.TextField() 
+    detail2 = models.TextField(blank = True) 
+    detail3 = models.TextField(blank = True) 
     detail_image = models.ImageField(blank = True, upload_to="detail")
     detail_image2 = models.ImageField(blank = True, upload_to="detail")
     detail_image3 = models.ImageField(blank = True, upload_to="detail")
