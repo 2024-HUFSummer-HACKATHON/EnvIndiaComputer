@@ -5,7 +5,6 @@ import App from './App';
 import { createRoot } from 'react-dom/client';
 import theme from './styles/theme';
 import { ThemeProvider } from 'styled-components';
-import GlobalStyle from './styles/globalCss';
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
@@ -18,7 +17,6 @@ const rootElement=document.getElementById('root');
 
 createRoot(rootElement).render(
   <ThemeProvider theme={theme}>
-    <GlobalStyle />
     <App />
   </ThemeProvider>
 );
