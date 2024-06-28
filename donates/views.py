@@ -34,6 +34,7 @@ class TopicDetailViewSet(viewsets.ModelViewSet):
             return Response({"error": "month에 해당하는 데이터가 없습니다."}, status=status.HTTP_404_NOT_FOUND)
         serializer = self.get_serializer(queryset.first())
         return Response(serializer.data)
+    
 
 # 축하 페이지 및 기부단체 url 제공
 class CelebrationViewSet(APIView):
