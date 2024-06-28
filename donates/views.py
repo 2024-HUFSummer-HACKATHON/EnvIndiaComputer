@@ -38,7 +38,7 @@ class TopicDetailViewSet(viewsets.ModelViewSet):
 
 # 축하 페이지 및 기부단체 url 제공
 class CelebrationViewSet(APIView):
-    @method_decorator(csrf_exempt)
+    # @method_decorator(csrf_exempt)
     def patch(self, request):
         topic_id = request.data.get('id')
         topic = get_object_or_404(Topic, id=topic_id)
