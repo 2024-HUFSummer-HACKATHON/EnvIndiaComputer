@@ -7,6 +7,8 @@ import PastRankingList from "./pages/PastRankingList";
 import Ranking from "./pages/Ranking";
 import Sitemap from "./pages/Sitemap";
 
+import Test from "./pages/Test";
+
 
 const routes = [
     {
@@ -48,6 +50,11 @@ const routes = [
         element: <PastRanking />,
         name: '03-3. 과거 명예의 전당 페이지'
     },
+    {
+        path:'/test',
+        element:<Test />,
+        name:'test page'
+    }
 ]
 
 export default routes;
