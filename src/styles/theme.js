@@ -21,7 +21,8 @@ const theme={
         detailText:'18px',
         gotoDonation:'24px',
         BtnText:'22px',
-        nameText:'18px'
+        nameText:'18px',
+
     },
     fontWeights:{
         Bold:'Bold',
