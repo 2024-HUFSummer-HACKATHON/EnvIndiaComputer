@@ -6,7 +6,7 @@ const Button = styled.button`
   flex-direction: row;
   align-items: center;
 
-  margin: 26px auto;
+  /* margin: 26px auto; */
   width: 340px;
   height: 55px;
   border: none;
