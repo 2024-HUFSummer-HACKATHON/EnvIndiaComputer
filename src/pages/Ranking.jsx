@@ -183,7 +183,7 @@ function Ranking() {
 
   useEffect(() => {
     // 이미지 데이터를 가져오는 API 호출
-    setInterval(() => fetchImageData(), 3000);
+    setInterval(() => fetchImageData(), 100);
   }, [month]);
   const fetchImageData = async () => {
     try { 
