@@ -2,6 +2,7 @@ import React from 'react';
 import { BsFillStarFill, BsCheckCircleFill, BsDashCircle, BsFillTrophyFill } from "react-icons/bs";
 import styled from 'styled-components';
 import BlockButtons from '../components/BlockButtons';
+import { useNavigate } from "react-router-dom";
 
 const Title = styled.div`
   display: flex;
@@ -28,6 +29,17 @@ const months = [
 
 function PastRankingList() {
   const currentMonth = new Date().getMonth(); // 0부터 시작하므로 1월은 0, 12월은 11
+  const navigate = useNavigate();
+
+  const handleClick = (index) => {
+    if (index < currentMonth) {
+      navigate('/pastranking', { state: { month: months[index] } });
+    } else if (index === currentMonth) {
+      navigate('/ranking');
+    } else {
+      alert("아직 기부가 시작되지 않았어요!");
+    }
+  };
 
   return (
     <>
@@ -41,7 +53,7 @@ function PastRankingList() {
           const isCurrent = index === currentMonth; // 현재 달
           const icon = isCurrent ? <BsCheckCircleFill/> : <BsDashCircle/>;
           const bgColor = isPast ? '#01B8E9' : isCurrent ? '#0055A5' : '#E1F0F4';
-          const textColor = isPast ? '#ffffff' : isCurrent ? '#ffffff' : '#AFCED6'; // 현재 달은 흰색(#ffffff), 과거 달은 흰색(#ffffff), 미래 달은 #AFCED6
+          const textColor = isPast || isCurrent ? '#ffffff' : '#AFCED6'; // 현재 달과 과거 달은 흰색(#ffffff), 미래 달은 #AFCED6
 
           return (
             <BlockButtons 
@@ -50,6 +62,7 @@ function PastRankingList() {
               text={`${month}: ${month} 주제`} 
               bgColor={bgColor}
               textColor={textColor}
+              onClick={() => handleClick(index)}
             />
           );
         })}
