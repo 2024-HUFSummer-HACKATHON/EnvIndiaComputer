@@ -19,7 +19,7 @@ class TopicViewSet(viewsets.ModelViewSet):
         queryset = self.get_queryset().filter(month=month)
         if not queryset.exists():
             return Response({"error": "month에 해당하는 데이터가 없습니다."}, status=status.HTTP_404_NOT_FOUND)
-        serializer = self.get_serializer(queryset, many=True)
+        serializer = self.get_serializer(queryset.first())
         return Response(serializer.data)
 
 # 기부 관련 상세 설명 및 이미지 제공
@@ -32,7 +32,7 @@ class TopicDetailViewSet(viewsets.ModelViewSet):
         queryset = self.get_queryset().filter(month=month)
         if not queryset.exists():
             return Response({"error": "month에 해당하는 데이터가 없습니다."}, status=status.HTTP_404_NOT_FOUND)
-        serializer = self.get_serializer(queryset, many=True)
+        serializer = self.get_serializer(queryset.first())
         return Response(serializer.data)
 
 # 축하 페이지 및 기부단체 url 제공
