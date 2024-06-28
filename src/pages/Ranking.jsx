@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import BlockButtons from '../components/BlockButtons';
 import { useNavigate } from 'react-router-dom';
 import PersonRanking from '../components/PersonRanking';
+import getHallInfo from '../APIs/get/getHallInfo';
+import axios from 'axios';
+
 
 const Title = styled.div`
   display: flex;
@@ -46,8 +49,11 @@ const AnimationBox = styled.div`
   position: relative;
   width: 378px;
   height: 253px;
-  background-color: #F1FCFF;
-  overflow: hidden;  // 공이 박스를 벗어나지 않도록 설정
+  /* background-color: #F1FCFF; */
+  /* background-image: url('/images/basketBackground.png'); */
+  background-size: cover; //이미지를 박스에 맞추기 위해
+  background-repeat: no-repeat; //이미지 반복 제거
+  /* overflow: hidden;  // 공이 박스를 벗어나지 않도록 설정 */
 `;
 
 const MoveBall = styled.img`
@@ -145,6 +151,11 @@ const calculateDday = () => {
 function Ranking() {
   const navigate = useNavigate();
   const [dday, setDday] = useState(calculateDday());
+  const currentDate = new Date();
+  const month = currentDate.getMonth() + 1;
+  const [hallData, setHallData] = useState({}); // 명예의 전당 데이터 상태 추가
+  const [backgroundImage, setBackgroundImage] = useState('');
+
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -153,6 +164,37 @@ function Ranking() {
 
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    async function fetchHallInfo() {
+      try {
+        const data = await getHallInfo(month); // 여기서 'jun'은 실제 월에 맞는 값으로 수정해야 합니다.
+        setHallData(data);
+        console.log(month);
+        console.log("데이터: ", data);
+        console.log("홀데이터: ", hallData);
+      } catch (error) {
+        console.error('명예의 전당 정보를 불러오는 중 오류 발생', error);
+      }
+    }
+
+    fetchHallInfo();
+  }, []);
+
+  useEffect(() => {
+    // 이미지 데이터를 가져오는 API 호출
+    setInterval(() => fetchImageData(), 3000);
+  }, []);
+  const fetchImageData = async () => {
+    try { 
+      const response = await axios.get(`http://3.38.234.33:8000/api/accounts/fame/${month}`); // 여기에 실제 API 엔드포인트를 넣으세요
+      setBackgroundImage(hallData.image);
+      // console.log("데이터1: ", data);
+      console.log("홀데이터1: ", backgroundImage);
+    } catch (error) {
+      console.error("이미지 데이터를 가져오는 데 실패했습니다:", error);
+    }
+  };
 
   return (
     <>
@@ -166,7 +208,7 @@ function Ranking() {
         <Percent>56%</Percent>
       </PercentBox>
       <AnimationContainer>
-        <AnimationBox>
+        <AnimationBox style={{ backgroundImage: `url(http://3.38.234.33:8000/${backgroundImage})` }}>
           <MoveBall src="/images/moveBall.png" />
         </AnimationBox>
       </AnimationContainer>
