@@ -165,32 +165,32 @@ function Ranking() {
     return () => clearInterval(timer);
   }, []);
 
-  useEffect(() => {
-    async function fetchHallInfo() {
-      try {
-        const data = await getHallInfo(month); // 여기서 'jun'은 실제 월에 맞는 값으로 수정해야 합니다.
-        setHallData(data);
-        console.log(month);
-        console.log("데이터: ", data);
-        console.log("홀데이터: ", hallData);
-      } catch (error) {
-        console.error('명예의 전당 정보를 불러오는 중 오류 발생', error);
-      }
-    }
+  // useEffect(() => {
+  //   async function fetchHallInfo() {
+  //     try {
+  //       const data = await getHallInfo(month); // 여기서 'jun'은 실제 월에 맞는 값으로 수정해야 합니다.
+  //       setHallData(data);
+  //       console.log(month);
+  //       console.log("데이터: ", data);
+  //       console.log("홀데이터: ", hallData);
+  //     } catch (error) {
+  //       console.error('명예의 전당 정보를 불러오는 중 오류 발생', error);
+  //     }
+  //   }
 
-    fetchHallInfo();
-  }, []);
+  //   fetchHallInfo();
+  // }, []);
 
   useEffect(() => {
     // 이미지 데이터를 가져오는 API 호출
     setInterval(() => fetchImageData(), 3000);
-  }, []);
+  }, [month]);
   const fetchImageData = async () => {
     try { 
       const response = await axios.get(`http://3.38.234.33:8000/api/accounts/fame/${month}`); // 여기에 실제 API 엔드포인트를 넣으세요
-      setBackgroundImage(hallData.image);
+      setBackgroundImage(response.data.image);
       // console.log("데이터1: ", data);
-      console.log("홀데이터1: ", backgroundImage);
+      // console.log("홀데이터1: ", backgroundImage);
     } catch (error) {
       console.error("이미지 데이터를 가져오는 데 실패했습니다:", error);
     }
