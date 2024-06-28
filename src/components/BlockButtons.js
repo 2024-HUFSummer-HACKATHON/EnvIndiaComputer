@@ -32,10 +32,10 @@ const Icon = styled.div`
   }
 `;
 
-function BlockButtons({ text, icon, bgColor }) {
+function BlockButtons({ text, icon, bgColor, onClick }) {
   return (
     <>
-      <Button bgColor={bgColor}>
+      <Button bgColor={bgColor} onClick={onClick}>
         <Icon>{icon}</Icon>
         {text}
       </Button>

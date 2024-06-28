@@ -26,7 +26,7 @@ const Header=styled.div`
     /* justify-content:center; */
     /* justify-content:space-between; */
     height:40px;
-    padding:25px;
+    padding:15px 25px;
 `
 const Logo=styled.img`
     width: 135px;
@@ -49,6 +49,8 @@ const Footer=styled.div`
 const Text=styled.div`
     width: 100%;
     text-align: center;
+
+    color: ${({theme})=>theme.colors.black};
  `   
 const Mobile=()=>{
     return(
