@@ -22,11 +22,11 @@ class FameView(APIView):
         for donator in donators:
             single_amount_total = getattr(donator, months[month]) * single_amount
             present_total_money += single_amount_total
-            donators_lst.append({"name":donator.user.nickname, "money": single_amount_total, "contribute":float(single_amount_total) / topic.target_amount * 100})
+            donators_lst.append({"name":donator.user.nickname, "money": single_amount_total, "contribute":round(float(single_amount_total) / topic.target_amount * 100,1)})
         
-        total_progress = present_total_money/topic.target_amount*100
+        total_progress = int(present_total_money/topic.target_amount*100)
         return Response({
-                    "image": "static/{0}/progress_{1}.png".format(months[month], (present_total_money/topic.target_amount*100)//10 * 10),
+                    "image": "static/{0}/progress_{1}.png".format(months[month], int((present_total_money/topic.target_amount*100)//10 * 10)),
                     "total_progress": total_progress,
                     "ranking": donators_lst
                 },
