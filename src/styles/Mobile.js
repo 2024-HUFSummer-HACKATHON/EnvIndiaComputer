@@ -27,7 +27,9 @@ const Header = styled.div`
     padding: 25px;
 `;
 
+
 const Logo = styled.img`
+
     width: 135px;
     height: 60px;
 `;
@@ -46,6 +48,7 @@ const Footer = styled.div`
 const Text = styled.div`
     width: 100%;
     text-align: center;
+
 `;
 
 const Mobile = () => {
@@ -53,6 +56,7 @@ const Mobile = () => {
     const isHidden = location.pathname === '/' || location.pathname === '/main';
 
     return (
+
         <>
             <Container>
                 <Content>

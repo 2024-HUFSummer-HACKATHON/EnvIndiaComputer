@@ -22,6 +22,7 @@ const theme={
         gotoDonation:'24px',
         BtnText:'22px',
         nameText:'18px',
+
     },
     fontWeights:{
         Bold:'Bold',
