@@ -9,7 +9,7 @@ const Container = styled.div`
     overflow: auto;
 
     flex-wrap: wrap;
-    gap:1vw;
+    /* gap:1vw; */
 `;
 
 const Content = styled.div`

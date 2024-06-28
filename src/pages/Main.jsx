@@ -10,22 +10,30 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  justify-content: space-between;
   flex-wrap: wrap;
   gap: 2vw;
 
-  padding: 10%;
+  width: 100%;
+  height: 100%;
 `;
 
 const Title = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  text-align: left; /* 왼쪽 정렬 추가 */
+  /* text-align: left;  */
+  /* 왼쪽 정렬 추가 */
 
-  width: 100%;
+  width: 80%;
+
+  flex-wrap: wrap;
+  gap: 1vw;
+
+  /* padding: 1vw; */
 
   .icons {
-    margin-right: 16px;
     width: 30px;
     height: 30px;
   }
@@ -35,15 +43,32 @@ const Title = styled.div`
   font-weight: ${({ theme }) => theme.fontWeights.Bold};
 `;
 
-const ContentImg = styled.div`
-  margin: 0 44px;
-  width: 70%;
+const ImageContent=styled.div`
+  display: flex;
+  flex-direction: column;
+
+  /* width: 80%;
+  height: 100%; */
+  /* width: 100%; */
+  width: 340px;
+  height: 190px;
+
+  border-radius: 35px;
+  padding: 1.5vw;
+
+  color:white;
+  font-size: ${({theme})=>theme.fontSizes.imgText};
+  font-weight: ${({theme})=>theme.fontWeights.Bold};
+  
   height: auto;
   background-image: url(${BaseBall}); // 이미지를 동적으로 삽입
-  /* background-size: cover; */
+  background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  background-size: auto; 
+  background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+
+  .icon{
+    margin: auto 0px auto auto;
+  }
 `;
 
 const ContentText = styled.div`
@@ -51,12 +76,12 @@ const ContentText = styled.div`
   letter-spacing: 0.1vw;
 
   max-width: 300px;
-  margin-top: 20px;
 
   word-wrap: normal;
   word-break: keep-all;
   line-height: 1.4;
   border-left: 5px solid ${({ theme }) => theme.colors.black};
+
 `;
 
 const GotoDonation = styled.button`
@@ -65,7 +90,7 @@ const GotoDonation = styled.button`
   align-items: center;
   text-align: left; /* 왼쪽 정렬 추가 */
   
-  width: 100%;
+  width: 80%;
 
   border: none;
   background-color: transparent;
@@ -93,27 +118,31 @@ function Main() {
   const navigate = useNavigate();
 
   return (
-    <Container>
-      <Title>
-        <BsChatRightQuoteFill className='icons' />
-        6월 기부
-      </Title>
-      <ContentImg>
+    <>
+      <Container>
+        <Title>
+          <BsChatRightQuoteFill className='icons' />
+          6월 기부
+        </Title>
+        <ImageContent>
+          <BsArrowRightCircleFill className='icon'/>
+          장애인 농구
+        </ImageContent>
 
-      </ContentImg>
-      <ContentText>
-        신체적으로 불편한 학우들이 학교의 계단, 여닫이 문 등으로 인한 불편함을 겪지 않도록 시설 개선을 위한 모금
-      </ContentText>
-      <GotoDonation onClick={() => navigate('/donate')}>
-        <BsArrowRightCircleFill />
-        기부하러가기
-      </GotoDonation>
-      <BlockButtons 
-        icon={<BsFillTrophyFill />} 
-        text="명예의 전당" 
-        onClick={() => navigate('/ranking')} 
-      />
-    </Container>
+        <ContentText>
+          신체적으로 불편한 학우들이 학교의 계단, 여닫이 문 등으로 인한 불편함을 겪지 않도록 시설 개선을 위한 모금
+        </ContentText>
+        <GotoDonation onClick={() => navigate('/donate')}>
+          <BsArrowRightCircleFill />
+          기부하러가기
+        </GotoDonation>
+        <BlockButtons 
+          icon={<BsFillTrophyFill />} 
+          text="명예의 전당" 
+          onClick={() => navigate('/ranking')} 
+        />
+      </Container>
+    </>
   );
 }
 
