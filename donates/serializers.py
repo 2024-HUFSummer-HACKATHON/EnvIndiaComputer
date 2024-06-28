@@ -10,3 +10,8 @@ class TopicDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Topic
         fields = ('detail', 'detail_image')
+
+class CelebrationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Topic
+        fields = ('celebration_image', 'celebration_phrase', 'website_url')
