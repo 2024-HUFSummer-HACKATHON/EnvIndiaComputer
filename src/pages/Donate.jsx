@@ -19,6 +19,11 @@ const Container=styled.div`
   flex-wrap: wrap;
   gap: 1vw;
 `;
+
+const MarginSetting=styled.div`
+    margin-bottom: 3vw;
+`;
+
 const Title = styled.div`
   display: flex;
   flex-direction: row;
@@ -67,6 +72,8 @@ const DonationButton = styled.button`
   gap: 1vw;
   align-items: center;
   border: none;
+
+  background-color: transparent;
 
   font-size: ${({theme})=>theme.fontSizes.imgText};
   font-weight: ${({theme})=>theme.fontWeights.Bold};
@@ -145,11 +152,13 @@ function Donate() {
           <BsArrowRightCircleFill className='icons'/>
             기부하러가기
         </DonationButton>
-        <BlockButtons 
-          icon={<BsFillTrophyFill />} 
-          text="명예의 전당" 
-          onClick={() => navigate('/ranking')}
-        />
+        <MarginSetting>
+          <BlockButtons 
+            icon={<BsFillTrophyFill />} 
+            text="명예의 전당" 
+            onClick={() => navigate('/ranking')}
+          />
+        </MarginSetting>
       </Container>
     </>
   )
