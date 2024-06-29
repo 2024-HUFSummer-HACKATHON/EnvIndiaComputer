@@ -140,6 +140,13 @@ const HallMove = styled.button`
   margin-left: 230px;
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  margin-bottom: 19px;
+`
+
 const calculateDday = () => {
   const today = new Date();
   const lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
@@ -155,7 +162,8 @@ function Ranking() {
   const month = currentDate.getMonth() + 1;
   const [hallData, setHallData] = useState({}); // 명예의 전당 데이터 상태 추가
   const [backgroundImage, setBackgroundImage] = useState('');
-
+  const [totalProgress, setTotalProgress] = useState(0);
+  const [ranking, setRanking] = useState([]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -165,36 +173,24 @@ function Ranking() {
     return () => clearInterval(timer);
   }, []);
 
-  // useEffect(() => {
-  //   async function fetchHallInfo() {
-  //     try {
-  //       const data = await getHallInfo(month); // 여기서 'jun'은 실제 월에 맞는 값으로 수정해야 합니다.
-  //       setHallData(data);
-  //       console.log(month);
-  //       console.log("데이터: ", data);
-  //       console.log("홀데이터: ", hallData);
-  //     } catch (error) {
-  //       console.error('명예의 전당 정보를 불러오는 중 오류 발생', error);
-  //     }
-  //   }
-
-  //   fetchHallInfo();
-  // }, []);
-
   useEffect(() => {
-    // 이미지 데이터를 가져오는 API 호출
-    setInterval(() => fetchImageData(), 100);
+    const fetchImageData = async () => {
+      try { 
+        const response = await axios.get(`http://3.38.234.33:8000/api/accounts/fame/${month}`); // 여기에 실제 API 엔드포인트를 넣으세요
+        setBackgroundImage(response.data.image);
+        setTotalProgress(response.data.total_progress);
+        setRanking(response.data.ranking); // ranking 데이터 설정
+        console.log("홀데이터1: ", backgroundImage);
+      } catch (error) {
+        console.error("이미지 데이터를 가져오는 데 실패했습니다:", error);
+      }
+    };
+
+    fetchImageData(); // 페이지 로드 시 즉시 호출
+    const intervalId = setInterval(fetchImageData, 3000); // 3초마다 호출
+
+    return () => clearInterval(intervalId); // 컴포넌트 언마운트 시 interval 클리어
   }, [month]);
-  const fetchImageData = async () => {
-    try { 
-      const response = await axios.get(`http://3.38.234.33:8000/api/accounts/fame/${month}`); // 여기에 실제 API 엔드포인트를 넣으세요
-      setBackgroundImage(response.data.image);
-      // console.log("데이터1: ", data);
-      // console.log("홀데이터1: ", backgroundImage);
-    } catch (error) {
-      console.error("이미지 데이터를 가져오는 데 실패했습니다:", error);
-    }
-  };
 
   return (
     <>
@@ -205,21 +201,23 @@ function Ranking() {
       </Title>
       <PercentBox>
         <Dday>D-{dday}</Dday>
-        <Percent>56%</Percent>
+        <Percent>{totalProgress}%</Percent>
       </PercentBox>
       <AnimationContainer>
         <AnimationBox style={{ backgroundImage: `url(http://3.38.234.33:8000/${backgroundImage})` }}>
           <MoveBall src="/images/moveBall.png" />
         </AnimationBox>
       </AnimationContainer>
-
-      <StyledBlockButton icon={<BsFillTrophyFill />} text="6월 명예의 전당" />
+      <ButtonContainer>
+        <StyledBlockButton icon={<BsFillTrophyFill />} text="6월 명예의 전당" />
+      </ButtonContainer>
       <HallMove onClick={() => navigate('/pastrankinglist')}>
         2024년 명예의 전당 보러 가기
       </HallMove>
-      <PersonRanking />
+      <PersonRanking ranking={ranking} />
     </>
   )
 }
 
 export default Ranking;
+//바꾼버전
