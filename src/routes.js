@@ -14,7 +14,7 @@ import Test from "./pages/Test";
 const routes = [
     {
         path: '/',
-        element: <Sitemap />,
+        element: <Intro />,
     },
     {
         path: '/main',
