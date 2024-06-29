@@ -197,7 +197,7 @@ function Ranking() {
       <Title>
         <BsChatRightQuoteFill className='icons'/>
         <Month>6월 기부</Month>
-        <Subject>: 장애인 농구</Subject>
+        <Subject>: 휠체어 농구</Subject>
       </Title>
       <PercentBox>
         <Dday>D-{dday}</Dday>
