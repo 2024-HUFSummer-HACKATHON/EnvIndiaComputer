@@ -63,8 +63,8 @@ function DonateCelebrate() {
         />
         <BlockButtons 
           icon={<BsBasket3Fill />} 
-          text={"스포츠 용품 구매하러 가기"} 
-          onClick={() => navigate('/test')} 
+          text={"스포츠 용품 구매하러 가기"}
+          onClick={() => window.location.href = 'https://zerotohero.co.kr/?gad_source=1&gclid=CjwKCAjwvvmzBhA2EiwAtHVrb7vuBVAQILpLLH43t9HHpt8hKrYg0JdFeWIMmczZPRRAvxE12rSlrhoCquwQAvD_BwE'} 
         />
       </Container>
       <BannerImg src={Banner} />
