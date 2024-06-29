@@ -62,9 +62,9 @@ const Mobile = () => {
 
     const location = useLocation();
     const isHidden = location.pathname === '/' || location.pathname === '/main';
+    const isTextHidden = location.pathname ==='/donate/celebrate';
 
     return (
-
         <>
             <Container>
                 <Content>
@@ -79,7 +79,9 @@ const Mobile = () => {
                     </Header>
                     <Outlet />
                     <Footer>
-                        <Text>
+                        <Text
+                            style={{ visibility: isTextHidden ? 'hidden' : 'visible' }}
+                        >
                             ⓒ 2024. 친환경인도컴퓨터. All rights reserved.
                         </Text>
                     </Footer>
