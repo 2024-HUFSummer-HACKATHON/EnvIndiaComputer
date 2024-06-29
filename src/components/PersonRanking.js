@@ -20,33 +20,9 @@ const Person = styled.div`
   justify-content: space-around;
   align-items: center;
   gap: 1vw;
-  margin: 19px 0;
-  font-size: ${({ theme }) => theme.fontSizes.nameText};
+  margin: 19px 14px;
+  font-size: 16px;
   font-weight: 600;
-
-  .icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .icons1 {
-    width: 24px;
-    height: 24px;
-    color: #01B8E9;
-  }
-
-  .icons2 {
-    width: 19px;
-    height: 19px;
-    color: #01B8E9;
-  }
-
-  .icons3 {
-    width: 12px;
-    height: 12px;
-    color: #01B8E9;
-  }
 `;
 
 const Person2 = styled.div`
@@ -54,13 +30,13 @@ const Person2 = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  margin: 19px 0;
-  font-size: ${({ theme }) => theme.fontSizes.nameText};
+  margin: 19px 14px;
+  font-size: 16px;
   font-weight: 600;
   color: #798E93;
 
   & > div:first-child {
-    margin-left: 24px; /* 아이콘이 있던 자리만큼 여백 추가 */
+    margin-left: 32px; /* 아이콘이 있던 자리만큼 여백 추가 */
   }
 `;
 
@@ -70,7 +46,7 @@ const Number = styled.div`
 `;
 
 const Name = styled.div`
-  width: 120px;
+  width: 100px;
   text-align: center;
 `;
 
@@ -82,14 +58,22 @@ const Percent = styled.div`
 const Amount = styled.div`
   width: 80px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-const Icon = styled.div`
+const IconWrapper = styled.div`
   width: 24px;
   height: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const StarIcon = styled(BsFillStarFill)`
+  color: #01B8E9;
+  vertical-align: middle;
 `;
 
 function PersonRanking({ ranking }) {
@@ -99,9 +83,9 @@ function PersonRanking({ ranking }) {
         {ranking.map((person, index) => (
           index < 3 ? (
             <Person key={index}>
-              <Icon className={`icon icons${index + 1}`}>
-                <BsFillStarFill />
-              </Icon>
+              <IconWrapper>
+                <StarIcon size={index === 0 ? 24 : index === 1 ? 19 : 12} />
+              </IconWrapper>
               <Number>{index + 1}</Number>
               <Name>{person.name}</Name>
               <Percent>{person.contribute}%</Percent>
