@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { useNavigate } from "react-router-dom";
 import { BsFillTrophyFill, BsBasket3Fill } from "react-icons/bs";
 import styled from 'styled-components';
@@ -11,28 +11,24 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
   flex-wrap: wrap;
-  gap: 0.5vw;
+  gap: 2vw;
   position: relative;
-  min-height: calc(100vh - 100px); /* Footer 높이만큼 계산 */
-  padding-bottom: 100px; /* Footer 높이만큼 패딩 추가 */
 `;
 
 const CelebrateText = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   font-size: ${({ theme }) => theme.fontSizes.pageHeader};
   font-weight: ${({ theme }) => theme.fontWeights.Bold};
   white-space: pre-wrap; /* 줄바꿈을 인식하고 적용 */
   text-align: center; /* 텍스트를 가운데 정렬 */
-
   word-wrap: normal;
   word-break: keep-all;
   line-height: 1.4;
 
-  .donation{
+  .donation {
     color: ${({ theme }) => theme.backgroundColors.blue};
   }
 `;
@@ -43,9 +39,9 @@ const BallGoalImg = styled.img`
 `;
 
 const BannerImg = styled.img`
-  width: 100%;
+  width: 428px;
   height: auto;
-  position: absolute;
+  position: fixed;
   bottom: 0;
 `;
 
@@ -56,17 +52,9 @@ function DonateCelebrate() {
     <>
       <Container>
         <BallGoalImg src={BallGoal} />
-        {/* <CelebrateText>
-          성공적으로
-          {"\n"}
-          <span className='donation'>기부</span>
-          되었습니다
-        </CelebrateText> */}
         <CelebrateText>
-          성공적으로
-          {"\n"}
-          기부
-          되었습니다
+          성공적으로<br />
+          <span><span className="donation">기부</span> 되었습니다</span>
         </CelebrateText>
         <BlockButtons 
           icon={<BsFillTrophyFill />} 
@@ -78,8 +66,8 @@ function DonateCelebrate() {
           text={"스포츠 용품 구매하러 가기"} 
           onClick={() => navigate('/test')} 
         />
-        <BannerImg src={Banner} />
       </Container>
+      <BannerImg src={Banner} />
     </>
   );
 }

@@ -47,29 +47,32 @@ const ImageContent=styled.div`
   display: flex;
   flex-direction: column;
 
-  /* width: 80%;
-  height: 100%; */
-  /* width: 100%; */
   width: 340px;
   height: 190px;
 
   border-radius: 35px;
-  padding: 1.5vw;
+  /* padding: 5vw; */
+  color: white;
+  font-size: ${({ theme }) => theme.fontSizes.imgText};
+  font-weight: ${({ theme }) => theme.fontWeights.Bold};
 
-  color:white;
-  font-size: ${({theme})=>theme.fontSizes.imgText};
-  font-weight: ${({theme})=>theme.fontWeights.Bold};
-  
-  height: auto;
-  background-image: url(${BaseBall}); // 이미지를 동적으로 삽입
+  background-image: url(${BaseBall});
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+  background-repeat: no-repeat;
+  /* 이미지 너비를 340px로 설정 */
+  background-size: 340px 190px;
 
+  background-color: red;
+  
   .icon{
-    margin: auto 0px auto auto;
+    margin: 1vw 1vw auto auto;
   }
-`;
+
+  .ImageText{
+    margin: auto auto 1vw 1vw ;
+  }
+  `;
 
 const ContentText = styled.div`
   padding-left: 1.5vw;
@@ -125,8 +128,11 @@ function Main() {
           6월 기부
         </Title>
         <ImageContent>
-          <BsArrowRightCircleFill className='icon'/>
-          장애인 농구
+          <BsArrowRightCircleFill 
+            onClick={() => navigate('/donate')}
+            className='icon'
+            />
+          <span className='ImageText'>휠체어 농구</span>
         </ImageContent>
 
         <ContentText>
