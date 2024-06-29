@@ -6,6 +6,7 @@ import PastRanking from "./pages/PastRanking";
 import PastRankingList from "./pages/PastRankingList";
 import Ranking from "./pages/Ranking";
 import Sitemap from "./pages/Sitemap";
+import Intro from "./pages/Intro";
 
 import Test from "./pages/Test";
 
@@ -54,6 +55,11 @@ const routes = [
         path:'/test',
         element:<Test />,
         name:'test page'
+    },
+    {
+        path:'/intro',
+        element:<Intro />,
+        name:'intro page'
     }
 ]
 
