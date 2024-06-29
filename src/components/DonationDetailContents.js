@@ -16,15 +16,23 @@ const Container=styled.div`
 
 const DonateDescription = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
   color: ${({theme})=>theme.colors.black};
+
+  flex-wrap: wrap;
+  gap: 1.5vw;
 `;
 
 const DonationImage=styled.div`
-  background-image: url(${BaseBall}); // 이미지를 동적으로 삽입
+  width: 340px;
+  height: 190px;
+  background-size: cover;
+  background-position: center;
+  background-image: url(${props => props.imgUrl});
+  border-radius: 15px;
 `;
 
 const DonationText=styled.div`
@@ -57,14 +65,10 @@ function DonationDetailContents({imgUrl,subheading,contents}){
         <>
             <Container>
                 <DonateDescription>
-                    <DonationImage>
-                      <img url='{imgUrl}' />
-                    </DonationImage>
+                    <DonationImage imgUrl={imgUrl}/>
                     <DonationText>
                         <DonationTextHeader>{subheading}</DonationTextHeader>
-                        {/* <DonationTextHeader>소제목01</DonationTextHeader> */}
                         {contents}
-                        {/* 신체적으로 불편한 학우들이 학교의 계단, 여닫이 문 등으로 인한 불편함을 겪지 않도록 시설 개선을 위한 모금 */}
                     </DonationText>
                 </DonateDescription>
             </Container>
